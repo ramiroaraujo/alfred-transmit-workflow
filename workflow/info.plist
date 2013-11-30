@@ -1,23 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.tumblr.ramiroaraujo.alfred-transmit-workflow</string>
+	<string>me.zhaowu.alfred2-ruby-em</string>
 	<key>connections</key>
 	<dict>
 		<key>21557827-8003-42B7-A042-16D4C9278FEC</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>42D05639-3F0F-4760-8214-317167E4173D</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>BA17BE41-176A-4E9A-B958-A3F0BEA36829</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -42,33 +31,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>62</integer>
-				<key>keyword</key>
-				<string>test feedback</string>
-				<key>runningsubtext</key>
-				<string>working...</string>
-				<key>script</key>
-				<string>/usr/bin/ruby ./main.rb {query}</string>
-				<key>subtext</key>
-				<string>Ruby Based Workflow Template</string>
-				<key>title</key>
-				<string>Test Alfred Feedback</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>21557827-8003-42B7-A042-16D4C9278FEC</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -88,33 +50,37 @@
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
 			<string>42D05639-3F0F-4760-8214-317167E4173D</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>escaping</key>
-				<integer>63</integer>
+				<integer>62</integer>
 				<key>keyword</key>
-				<string>test rescue feedback</string>
+				<string>test feedback</string>
 				<key>runningsubtext</key>
-				<string>...</string>
+				<string>working...</string>
 				<key>script</key>
-				<string>/usr/bin/ruby ./main_with_rescue_feedback.rb {query}</string>
+				<string>/Users/ramiroaraujo/.rvm/rubies/ruby-2.0.0-p353/bin/ruby ./main.rb {query}</string>
 				<key>subtext</key>
 				<string>Ruby Based Workflow Template</string>
 				<key>title</key>
-				<string>Test Alfred Rescue Feedback</string>
+				<string>Test Alfred Feedback</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
-				<false/>
+				<true/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>BA17BE41-176A-4E9A-B958-A3F0BEA36829</string>
+			<string>21557827-8003-42B7-A042-16D4C9278FEC</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -124,17 +90,12 @@
 		<key>21557827-8003-42B7-A042-16D4C9278FEC</key>
 		<dict>
 			<key>ypos</key>
-			<real>250.0</real>
+			<real>250</real>
 		</dict>
 		<key>42D05639-3F0F-4760-8214-317167E4173D</key>
 		<dict>
 			<key>ypos</key>
-			<real>140.0</real>
-		</dict>
-		<key>BA17BE41-176A-4E9A-B958-A3F0BEA36829</key>
-		<dict>
-			<key>ypos</key>
-			<real>370.0</real>
+			<real>140</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>

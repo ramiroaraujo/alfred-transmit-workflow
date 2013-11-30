@@ -1,45 +1,37 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
-require "bundle/bundler/setup"
+require_relative 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
+require_relative "bundle/bundler/setup"
+require "sqlite3"
 require "alfred"
 
-
-
+query = ARGV[0]
 
 Alfred.with_friendly_error do |alfred|
+
   fb = alfred.feedback
 
-  # add a file feedback
-  fb.add_file_item(File.expand_path "~/Applications/")
+  # read sqllite DB from Transmit
+  db = SQLite3::Database.open (File.expand_path '~/Dropbox/apps/transmit/favorites/Favorites.sqlite')
+  db.execute("select ZUUIDSTRING, ZNICKNAME, ZUSERNAME, ZSERVER from ZOBJECT where Z2_COLLECTION = 2 AND ZNICKNAME LIKE ?", "%#{query}%") do |row|
+    fb.add_item({
+                    :uid => row[0],
+                    :title => row[1],
+                    :subtitle => "#{row[2]}@#{row[3]}",
+                    :arg => row[0],
+                    :valid => "yes",
+                })
+  end
+  if fb.to_xml().to_s == '<items/>'
+    fb.add_item({
+                    :uid => '',
+                    :title => 'No results for your search',
+                    :arg => '',
+                    :valid => "no",
+                })
 
-  # add an arbitrary feedback
-  fb.add_item({
-    :uid      => ""                     ,
-    :title    => "Just a Test"          ,
-    :subtitle => "feedback item"        ,
-    :arg      => "A test feedback Item" ,
-    :valid    => "yes"                  ,
-  })
-  
-  # add an feedback to test rescue feedback
-  fb.add_item({
-    :uid          => ""                     ,
-    :title        => "Rescue Feedback Test" ,
-    :subtitle     => "rescue feedback item" ,
-    :arg          => ""                     ,
-    :autocomplete => "failed"               ,
-    :valid        => "no"                   ,
-  })
-
-  if ARGV[0].eql? "failed"
-    alfred.with_rescue_feedback = true
-    raise Alfred::NoBundleIDError, "Wrong Bundle ID Test!"
   end
 
-  puts fb.to_xml(ARGV)
+  puts fb.to_xml()
 end
-
-
-
