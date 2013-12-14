@@ -48,7 +48,7 @@
 				<key>runningsubtext</key>
 				<string>working...</string>
 				<key>script</key>
-				<string>~/.rvm/rubies/ruby-2.0.0-p353/bin/ruby ./main.rb {query}</string>
+				<string>/usr/bin/ruby ./main.rb {query}</string>
 				<key>subtext</key>
 				<string>Search for a Favorite</string>
 				<key>title</key>
@@ -94,7 +94,13 @@
 				<key>applescript</key>
 				<string>on alfred_script(query)
 	tell application "Transmit"
-	activate	set fav to item 1 of (favorites whose identifier is query)	tell current tab of (make new document at end)		connect to fav	end tellend tell
+	activate
+	set fav to item 1 of (favorites whose identifier is query)
+    tell current tab of document 1
+		connect to fav
+	end tell
+    activate
+end tell
 end alfred_script</string>
 				<key>cachescript</key>
 				<false/>
