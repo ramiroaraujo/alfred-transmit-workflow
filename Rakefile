@@ -6,7 +6,7 @@ require 'plist'
 config_file = 'config.yml'
 
 
-workflow_home=File.expand_path("~/Library/Application Support/Alfred 2/Alfred.alfredpreferences/workflows")
+workflow_home = File.expand_path("~/Library/Application Support/Alfred 2/Alfred.alfredpreferences/workflows")
 
 $config = YAML.load_file(config_file)
 $config["bundleid"] = "#{$config["domain"]}.#{$config["id"]}"
@@ -18,11 +18,38 @@ FileList['*/Rakefile'].each { |file|
   import file
 }
 
+desc "Update config"
 task :config do
+  modified = false
 
   info = Plist::parse_xml($config["plist"])
-  unless info['bundleid'].eql?($config["bundleid"])
+
+  if info['bundleid'] != $config["bundleid"]
     info['bundleid'] = $config["bundleid"]
+    modified = true
+  end
+  if info['createdby'] != $config["created_by"]
+    info['createdby'] = $config["created_by"]
+    modified = true
+  end
+  if info['description'] != $config["description"]
+    info['description'] = $config["description"]
+    modified = true
+  end
+  if info['name'] != $config["name"]
+    info['name'] = $config["name"]
+    modified = true
+  end
+  if info['webaddress'] != $config["website"]
+    info['webaddress'] = $config["website"]
+    modified = true
+  end
+  if info['readme'] != $config["readme"]
+    info['readme'] = $config["readme"]
+    modified = true
+  end
+
+  if modified == true
     File.open($config["plist"], "wb") { |file| file.write(info.to_plist) }
   end
 end
@@ -34,7 +61,7 @@ end
 desc "Install Gems"
 task "bundle:install" => [:chdir] do
   sh %Q{/usr/bin/bundle install --standalone --clean} do |ok, res|
-    if ! ok
+    if !ok
       puts "fail to install gems (status = #{res.exitstatus})"
     end
   end
@@ -43,7 +70,7 @@ end
 desc "Update Gems"
 task "bundle:update" => [:chdir] do
   sh %Q{/usr/bin/bundle update && /usr/bin/bundle install --standalone --clean} do |ok, res|
-    if ! ok
+    if !ok
       puts "fail to update gems (status = #{res.exitstatus})"
     end
   end

@@ -25,6 +25,28 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>22986D56-3FFC-4FE3-9B51-682C83515407</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>294F2915-553F-408E-9CA7-8FD70EB9D898</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>2D363F62-060F-4FB5-A3E2-F64E93FED04E</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>22986D56-3FFC-4FE3-9B51-682C83515407</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Ramiro Araujo</string>
@@ -36,6 +58,29 @@
 	<string>Transmit</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>title</key>
+				<string>Connecting to Favorite</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>75EBE37F-17A0-4A01-9C1C-829760FD7DEB</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -68,6 +113,74 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(query)
+					tell application "Transmit"
+					activate
+					set fav to item 1 of (favorites whose identifier is query)
+				    tell current tab of document 1
+						connect to fav
+					end tell
+				    activate
+				end tell
+				end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>8CBBCE70-6523-462F-BFF5-A629A7B1081D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>/usr/bin/ruby save_config.rb {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>22986D56-3FFC-4FE3-9B51-682C83515407</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>keyword</key>
+				<string>ftpconfig</string>
+				<key>script</key>
+				<string>/usr/bin/ruby config.rb</string>
+				<key>subtext</key>
+				<string>Indicate if Transmit Favorites are synced via Dropbox or not synced</string>
+				<key>title</key>
+				<string>Configure Transmit Workflow</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>2D363F62-060F-4FB5-A3E2-F64E93FED04E</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>lastpathcomponent</key>
 				<false/>
 				<key>onlyshowifquerypopulated</key>
@@ -79,48 +192,39 @@
 				<key>sticky</key>
 				<false/>
 				<key>title</key>
-				<string>Connecting to Favorite</string>
+				<string>Config saved</string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.notification</string>
 			<key>uid</key>
-			<string>75EBE37F-17A0-4A01-9C1C-829760FD7DEB</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>applescript</key>
-				<string>on alfred_script(query)
-	tell application "Transmit"
-	activate
-	set fav to item 1 of (favorites whose identifier is query)
-    tell current tab of document 1
-		connect to fav
-	end tell
-    activate
-end tell
-end alfred_script</string>
-				<key>cachescript</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.applescript</string>
-			<key>uid</key>
-			<string>8CBBCE70-6523-462F-BFF5-A629A7B1081D</string>
+			<string>294F2915-553F-408E-9CA7-8FD70EB9D898</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>readme</string>
 	<key>uidata</key>
 	<dict>
 		<key>21557827-8003-42B7-A042-16D4C9278FEC</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>
+		</dict>
+		<key>22986D56-3FFC-4FE3-9B51-682C83515407</key>
+		<dict>
+			<key>ypos</key>
+			<real>220</real>
+		</dict>
+		<key>294F2915-553F-408E-9CA7-8FD70EB9D898</key>
+		<dict>
+			<key>ypos</key>
+			<real>220</real>
+		</dict>
+		<key>2D363F62-060F-4FB5-A3E2-F64E93FED04E</key>
+		<dict>
+			<key>ypos</key>
+			<real>220</real>
 		</dict>
 		<key>75EBE37F-17A0-4A01-9C1C-829760FD7DEB</key>
 		<dict>

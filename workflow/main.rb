@@ -5,15 +5,18 @@ require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
 require_relative "bundle/bundler/setup"
 require "sqlite3"
 require "alfred"
+require "yaml"
 
 query = ARGV[0]
+
+favorites = YAML.load_file('config.yml')['path']
 
 Alfred.with_friendly_error do |alfred|
 
   fb = alfred.feedback
 
   # read sqllite DB from Transmit
-  db = SQLite3::Database.open (File.expand_path '~/Dropbox/apps/transmit/favorites/Favorites.sqlite')
+  db = SQLite3::Database.open (File.expand_path favorites)
   db.execute("select ZUUIDSTRING, ZNICKNAME, ZUSERNAME, ZSERVER from ZOBJECT where Z2_COLLECTION = 2 AND ZNICKNAME LIKE ?", "%#{query}%") do |row|
     fb.add_item({
                     :uid => row[0],
