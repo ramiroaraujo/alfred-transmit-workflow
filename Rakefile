@@ -5,7 +5,6 @@ require 'plist'
 
 config_file = 'config.yml'
 
-
 workflow_home = File.expand_path("~/Library/Application Support/Alfred 2/Alfred.alfredpreferences/workflows")
 
 $config = YAML.load_file(config_file)
@@ -104,4 +103,15 @@ desc "Remove any generated file"
 task :clobber => [:clean] do
   rmtree File.join($config["path"], ".bundle")
   rmtree File.join($config["path"], "bundle")
+end
+
+desc "Create packed Workflow"
+task :export => [:config, :chdir] do
+  file = "../#{$config['id']}.alfredworkflow"
+  rm file
+  files = Dir.entries('.').delete_if do |file|
+    %w(Gemfile Gemfile.lock .bundle . ..).include? file
+  end
+  `/usr/bin/zip -r #{file} #{files.shelljoin}`
+  puts 'Workflow exported to project directory'
 end
