@@ -5,11 +5,10 @@ require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
 require_relative "bundle/bundler/setup"
 require "sqlite3"
 require "alfred"
-require "yaml"
 
 query = ARGV[0]
 
-favorites = YAML.load_file('config.yml')['path']
+favorites = '~/Library/Application Support/Transmit/Favorites/Favorites.sqlite'
 
 Alfred.with_friendly_error do |alfred|
 

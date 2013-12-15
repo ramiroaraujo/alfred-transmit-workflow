@@ -24,23 +24,9 @@
 				<key>modifiersubtext</key>
 				<string></string>
 			</dict>
-		</array>
-		<key>22986D56-3FFC-4FE3-9B51-682C83515407</key>
-		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>294F2915-553F-408E-9CA7-8FD70EB9D898</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>2D363F62-060F-4FB5-A3E2-F64E93FED04E</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>22986D56-3FFC-4FE3-9B51-682C83515407</string>
+				<string>72FFBA0C-11C8-4D6A-98E4-4E5F0E34245A</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -115,15 +101,29 @@
 			<dict>
 				<key>applescript</key>
 				<string>on alfred_script(query)
-					tell application "Transmit"
-					activate
-					set fav to item 1 of (favorites whose identifier is query)
-				    tell current tab of document 1
-						connect to fav
-					end tell
-				    activate
-				end tell
-				end alfred_script</string>
+  tell application "Transmit"
+    activate
+    set fav to item 1 of (favorites whose identifier is query)
+    if document 1 exists then
+      if remote browser of current tab of document 1 exists then
+        set current tab of document 1 to (make new tab at end of document 1)
+        tell current tab of document 1
+          connect to fav
+        end tell
+      else
+        tell current tab of document 1
+          connect to fav
+        end tell
+      end if
+    else
+      tell current tab of (make new document at end)
+        connect to fav
+      end tell
+    end if
+    activate
+  end tell
+end alfred_script
+                    </string>
 				<key>cachescript</key>
 				<false/>
 			</dict>
@@ -137,67 +137,15 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>script</key>
-				<string>/usr/bin/ruby save_config.rb {query}</string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
-			<string>22986D56-3FFC-4FE3-9B51-682C83515407</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>127</integer>
-				<key>keyword</key>
-				<string>ftpconfig</string>
-				<key>script</key>
-				<string>/usr/bin/ruby config.rb</string>
-				<key>subtext</key>
-				<string>Indicate if Transmit Favorites are synced via Dropbox or not synced</string>
-				<key>title</key>
-				<string>Configure Transmit Workflow</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>2D363F62-060F-4FB5-A3E2-F64E93FED04E</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<false/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>title</key>
-				<string>Config saved</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>294F2915-553F-408E-9CA7-8FD70EB9D898</string>
+			<string>72FFBA0C-11C8-4D6A-98E4-4E5F0E34245A</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -211,20 +159,10 @@
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
-		<key>22986D56-3FFC-4FE3-9B51-682C83515407</key>
+		<key>72FFBA0C-11C8-4D6A-98E4-4E5F0E34245A</key>
 		<dict>
 			<key>ypos</key>
-			<real>220</real>
-		</dict>
-		<key>294F2915-553F-408E-9CA7-8FD70EB9D898</key>
-		<dict>
-			<key>ypos</key>
-			<real>220</real>
-		</dict>
-		<key>2D363F62-060F-4FB5-A3E2-F64E93FED04E</key>
-		<dict>
-			<key>ypos</key>
-			<real>220</real>
+			<real>130</real>
 		</dict>
 		<key>75EBE37F-17A0-4A01-9C1C-829760FD7DEB</key>
 		<dict>
