@@ -1,7 +1,7 @@
 # Transmit 4 Workflow for Alfred app
 
 Workflow for searching and opening Favorites in Transmit 4 App. It's really _fast_, because it reads the SQLite Database
-in lastests realeases of Transmit 4.
+in latests releases of Transmit 4.
 
 
 ## Usage
