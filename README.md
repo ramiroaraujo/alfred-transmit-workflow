@@ -12,5 +12,8 @@ Type the keyword (default _ftp_) and start typing the name of the favorite to se
 ![search](https://raw.github.com/ramiroaraujo/alfred-transmit-workflow/master/screenshots/search.png)
 
 
+## OS Version
+OSX 10.9 Mavericks only, since the SQLite3 gem has native extensions, built with OSX Ruby 2 version.
+
 ## Installation
 Download the [alfred-transmit-workflow.alfredworkflow](https://github.com/ramiroaraujo/alfred-transmit-workflow/raw/master/alfred-transmit-workflow.alfredworkflow) and import to Alfred 2.
