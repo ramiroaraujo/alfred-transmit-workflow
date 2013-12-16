@@ -106,12 +106,41 @@ task :clobber => [:clean] do
 end
 
 desc "Create packed Workflow"
-task :export => [:config, :chdir] do
-  file = "../#{$config['id']}.alfredworkflow"
-  rm file
-  files = Dir.entries('.').delete_if do |file|
-    %w(Gemfile Gemfile.lock .bundle . ..).include? file
+task :export => [:config] do
+  file = "#{$config['id']}.alfredworkflow"
+  output = 'output'
+
+  FileUtils.rm file if File.exists? file
+  FileUtils.rmtree output if File.exists? output
+
+  FileUtils.cp_r $config['path'], output
+  chdir output
+
+  # clean up workflow files for export
+  Dir.foreach('.') do |file|
+    FileUtils.rmtree file if %w(Gemfile Gemfile.lock .bundle).include? file
   end
-  `/usr/bin/zip -r #{file} #{files.shelljoin}`
+  Dir.chdir('bundle/ruby/2.0.0') do
+    Dir.foreach('.') do |dir|
+      FileUtils.rmtree dir if %w(build_info cache doc specifications).include? dir
+    end
+    Dir.chdir('gems') do
+      Dir.foreach('.') do |dir|
+        next if dir == '.' || dir == '..'
+        Dir.chdir(dir) do
+          Dir.foreach('.') do |subdir|
+            next if dir == '.' || dir == '..'
+            FileUtils.rmtree subdir if !(%w(. .. lib).include? subdir)
+          end
+        end
+      end
+    end
+  end
+
+  `/usr/bin/zip -r ../#{file} *`
+
+  chdir('..')
+  FileUtils.rmtree output
+
   puts 'Workflow exported to project directory'
 end
