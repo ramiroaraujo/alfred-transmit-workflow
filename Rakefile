@@ -59,7 +59,7 @@ end
 
 desc "Install Gems"
 task "bundle:install" => [:chdir] do
-  sh %Q{/usr/bin/bundle install --standalone --clean} do |ok, res|
+  sh %Q{bundle install --standalone --clean} do |ok, res|
     if !ok
       puts "fail to install gems (status = #{res.exitstatus})"
     end
@@ -68,7 +68,7 @@ end
 
 desc "Update Gems"
 task "bundle:update" => [:chdir] do
-  sh %Q{/usr/bin/bundle update && /usr/bin/bundle install --standalone --clean} do |ok, res|
+  sh %Q{bundle update && bundle install --standalone --clean} do |ok, res|
     if !ok
       puts "fail to update gems (status = #{res.exitstatus})"
     end
