@@ -33,7 +33,8 @@ Alfred.with_friendly_error do |alfred|
 
   # read sqllite DB from Transmit
   db = SQLite3::Database.open(File.expand_path favorites)
-  db.execute("select ZUUIDSTRING, ZNICKNAME, ZUSERNAME, ZSERVER from ZOBJECT where Z2_COLLECTION = 2 AND ZNICKNAME LIKE ?", "%#{query}%") do |row|
+  search = "%#{query}%"
+  db.execute("select ZUUIDSTRING, ZNICKNAME, ZUSERNAME, ZSERVER from ZOBJECT where Z2_COLLECTION = 2 AND (ZNICKNAME LIKE ? OR ZSERVER LIKE ?)", search, search) do |row|
     fb.add_item({
                     :uid => row[0],
                     :title => row[1],
