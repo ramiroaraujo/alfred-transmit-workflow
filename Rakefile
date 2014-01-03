@@ -122,6 +122,12 @@ task :export => [:config] do
   Dir.foreach('.') do |file|
     FileUtils.rmtree file if %w(Gemfile Gemfile.lock .bundle).include? file
   end
+  Dir.chdir('bundle/ruby') do
+    Dir.foreach('.') do |dir|
+      next if dir == '.' || dir == '..'
+      FileUtils.rmtree dir if dir != ruby_version
+    end
+  end
   Dir.chdir("bundle/ruby/#{ruby_version}") do
     Dir.foreach('.') do |dir|
       FileUtils.rmtree dir if %w(build_info cache doc specifications).include? dir
