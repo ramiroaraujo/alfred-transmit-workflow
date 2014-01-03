@@ -8,12 +8,14 @@ There are already at least 2 Transmit workflows, but one is incompatible with la
 ## Usage
 Type the keyword (default _ftp_) and start typing the name of the favorite to search; dead simple.
 
-
 ![search](https://raw.github.com/ramiroaraujo/alfred-transmit-workflow/master/screenshots/search.png)
 
-
-## OS Version
-OSX 10.9 Mavericks only, since the SQLite3 gem has native extensions, built with OSX Ruby 2 version.
-
 ## Installation
-Download the [alfred-transmit-workflow.alfredworkflow](https://github.com/ramiroaraujo/alfred-transmit-workflow/raw/master/alfred-transmit-workflow.alfredworkflow) and import to Alfred 2.
+For OS X 10.9 Mavericks, Download the [alfred-transmit-workflow.alfredworkflow](https://github.com/ramiroaraujo/alfred-transmit-workflow/raw/master/alfred-transmit-workflow.alfredworkflow) and import to Alfred 2.
+
+For Previous OS X Versions, Download the [alfred-transmit-workflow.alfredworkflow](https://github.com/ramiroaraujo/alfred-transmit-workflow/raw/pre-mavericks/alfred-transmit-workflow.alfredworkflow) and import to Alfred 2.
+
+## Changelog
+* _2013-12-16_ - Released
+* _2014-01-02_ - Added support for previous OS versions, using System Ruby 1.8, tested up to Lion
+* _2014-01-03_ - Search in both Favorite name and host
