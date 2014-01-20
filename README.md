@@ -1,7 +1,6 @@
 # Transmit 4 Workflow for Alfred app
 
-Workflow for searching and opening Favorites in Transmit 4 App. It's really _fast_, because it reads the SQLite Database
-in latests releases of Transmit 4.
+Workflow for searching and opening Favorites in Transmit 4 App. It's really _fast_, because it reads the SQLite Database or XML datasource in latests releases of Transmit 4.
 
 There are already at least 2 Transmit workflows, but one is incompatible with latests Transmit 4 and the other, although very good, uses AppleScript to do the searching, and thus you need to wait for Transmit to open to get feedback. This is particulary slow on non SSD machines.
 
