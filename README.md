@@ -19,3 +19,4 @@ For Previous OS X Versions, Download the [alfred-transmit-workflow.alfredworkflo
 * _2013-12-16_ - Released
 * _2014-01-02_ - Added support for previous OS versions, using System Ruby 1.8, tested up to Lion
 * _2014-01-03_ - Search in both Favorite name and host
+* _2014-01-20_ - Added support for Favorites.xml
