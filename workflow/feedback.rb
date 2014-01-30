@@ -2,9 +2,9 @@
 # encoding: utf-8
 
 require 'rubygems' unless defined? Gem # rubygems is only needed in 1.8
-require_relative 'bundle/bundler/setup'
+require 'bundle/bundler/setup'
 require 'alfred'
-require_relative 'transmit'
+require 'transmit'
 
 query = ARGV[0]
 query = query.downcase if query

@@ -1,4 +1,4 @@
-require_relative 'transmit'
+require 'transmit'
 
 transmit = Transmit.new
 transmit.rebuild_cache

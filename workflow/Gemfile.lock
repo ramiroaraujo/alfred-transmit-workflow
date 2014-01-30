@@ -12,6 +12,7 @@ GEM
     fuzzy_match (2.0.4)
     gyoku (1.1.1)
       builder (>= 2.1.2)
+    json (1.8.1)
     moneta (0.7.20)
     nori (2.3.0)
     plist (3.1.0)
@@ -24,6 +25,7 @@ PLATFORMS
 
 DEPENDENCIES
   alfred-workflow
+  json
   plist
   sqlite3
   xml-simple

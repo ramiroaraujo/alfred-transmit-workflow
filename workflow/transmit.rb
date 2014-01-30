@@ -1,4 +1,4 @@
-require_relative 'bundle/bundler/setup'
+require 'bundle/bundler/setup'
 require 'xmlsimple'
 require 'sqlite3'
 require 'json'
@@ -37,7 +37,7 @@ class Transmit
       favorites = @type == 'xml' ? cache_xml : cache_sqlite
     end
     result = favorites['list'].select do |fav|
-      fav['name'] =~ /#{query}/ || fav['server'] =~ /#{query}/
+      fav['name'].downcase =~ /#{query}/ || fav['server'].downcase =~ /#{query}/
     end
     result
   end
@@ -55,6 +55,7 @@ class Transmit
     data = XmlSimple.xml_in(File.open File.expand_path @favorites_folder + @favorites_xml)['object'].select do |obj|
       obj['type'] == 'FAVORITE' && obj['relationship'][0]['name'] == 'collection' && obj['relationship'][0]['idrefs'] != 'z103'
     end
+
     favorites = {
         'list' => data.map do |fav|
           {
