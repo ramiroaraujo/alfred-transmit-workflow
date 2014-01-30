@@ -137,7 +137,7 @@ task :export => [:config] do
         next if dir == '.' || dir == '..'
         Dir.chdir(dir) do
           Dir.foreach('.') do |subdir|
-            next if dir == '.' || dir == '..'
+            next if subdir == '.' || subdir == '..'
             FileUtils.rmtree subdir if !(%w(. .. lib).include? subdir)
           end
         end
