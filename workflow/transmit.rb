@@ -28,7 +28,7 @@ class Transmit
   def search query
     cached = File.exists? 'favorites.json'
     if cached
-      favorites = JSON.parse IO.read 'favorites.json'
+      favorites = JSON.load IO.read 'favorites.json'
       time = favorites['time']
       totaltime = time + 10
       cached = false if (favorites['time'] + 86400) < Time.now.to_i
