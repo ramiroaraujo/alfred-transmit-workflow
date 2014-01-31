@@ -12,9 +12,9 @@ Type the keyword (default _ftp_) and start typing the name of the favorite to se
 ![search](https://raw.github.com/ramiroaraujo/alfred-transmit-workflow/master/screenshots/search.png)
 
 ## Installation
-For OS X 10.9 Mavericks, Download the [alfred-transmit-workflow.alfredworkflow](https://github.com/ramiroaraujo/alfred-transmit-workflow/raw/master/alfred-transmit-workflow.alfredworkflow) and import to Alfred 2.
+For OS X 10.9 Mavericks, Download the [alfred-transmit.alfredworkflow](https://github.com/ramiroaraujo/alfred-transmit-workflow/raw/master/alfred-transmit.alfredworkflow) and import to Alfred 2.
 
-For Previous OS X Versions, Download the [alfred-transmit-workflow.alfredworkflow](https://github.com/ramiroaraujo/alfred-transmit-workflow/raw/pre-mavericks/alfred-transmit-workflow.alfredworkflow) and import to Alfred 2.
+For Previous OS X Versions, Download the [alfred-transmit.alfredworkflow](https://github.com/ramiroaraujo/alfred-transmit-workflow/raw/pre-mavericks/alfred-transmit.alfredworkflow) and import to Alfred 2.
 
 ## Changelog
 * _2013-12-16_ - Released
