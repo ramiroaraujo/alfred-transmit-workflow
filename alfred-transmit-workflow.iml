@@ -5,13 +5,20 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="ruby-2.0.0-p353" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="PROVIDED" name="alfred-workflow (v2.0.5, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bigdecimal (v1.2.5, ruby-2.0.0-p353) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.2, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bundler (v1.5.3, ruby-2.0.0-p353) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="fuzzy_match (v2.0.4, ruby-2.0.0-p353) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="gyoku (v1.1.1, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="json (v1.8.1, ruby-2.0.0-p353) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="moneta (v0.7.20, ruby-2.0.0-p353) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="nori (v2.3.0, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="plist (v3.1.0, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.1.1, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rdoc (v4.1.1, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rubygems-update (v2.2.2, ruby-2.0.0-p353) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="terminal-notifier (v1.5.1, ruby-2.0.0-p353) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="test-unit (v2.5.5, ruby-2.0.0-p353) [gem]" level="application" />
   </component>
 </module>
