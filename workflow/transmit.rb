@@ -58,11 +58,14 @@ class Transmit
 
     favorites = {
         'list' => data.map do |fav|
+
+          username = fav['attribute'].detect { |attr| attr['name'] == 'username' }
+          username = username ? username['content'] : 'anonymous'
           {
               'uuid' => fav['attribute'].detect { |attr| attr['name'] == 'uuidstring' }['content'],
               'name' => fav['attribute'].detect { |attr| attr['name'] == 'nickname' }['content'],
               'server' => fav['attribute'].detect { |attr| attr['name'] == 'server' }['content'],
-              'username' => fav['attribute'].detect { |attr| attr['name'] == 'username' }['content'],
+              'username' => username,
           }
         end
     }
