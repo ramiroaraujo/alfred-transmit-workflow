@@ -22,3 +22,4 @@ For Previous OS X Versions, Download the [alfred-transmit.alfredworkflow](https:
 * _2014-01-03_ - Search in both Favorite name and host
 * _2014-01-20_ - Added support for Favorites.xml
 * _2014-01-30_ - Rebuilt XML search to use different Ruby xml parser
+* _2014-03-14_ - Corrected bug that prevented listing of anonymous ftp accounts
