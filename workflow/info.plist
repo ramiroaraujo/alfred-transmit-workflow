@@ -47,6 +47,28 @@
 				<string></string>
 			</dict>
 		</array>
+		<key>422F1D87-A768-4B92-843D-C8C279EE7BA2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>FE1098F7-C718-4415-9D90-909C3F46A8D8</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>FE1098F7-C718-4415-9D90-909C3F46A8D8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DC542A93-ECDF-42FA-B8A7-90C4AE6CA005</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Ramiro Araujo</string>
@@ -150,23 +172,6 @@ end alfred_script</string>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string>/usr/bin/ruby ./rebuild.rb</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>185E3A4B-9F86-42F2-B4A5-74E6B986C28D</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
@@ -208,6 +213,92 @@ end alfred_script</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string>/usr/bin/ruby ./rebuild.rb</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>185E3A4B-9F86-42F2-B4A5-74E6B986C28D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(query)	set transmitWasOpen to is_running("Transmit")	tell application "Transmit"		activate				set fav to item 1 of (favorites whose identifier is query)				if document 1 exists then			if remote browser of current tab of document 1 exists then				set previous_tab to current tab of document 1				set current tab of document 1 to (make new tab at end of document 1)				tell current tab of document 1					connect to fav with mount					close				end tell				set current tab of document 1 to previous_tab			else				tell current tab of document 1					connect to fav with mount				end tell			end if		else			tell current tab of (make new document at end)				connect to fav with mount				close			end tell		end if	end tell	if transmitWasOpen is false then		tell application "Transmit"			quit		end tell	end if	return the name of favend alfred_scripton is_running(appName)	tell application "System Events" to (name of processes) contains appNameend is_running</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>FE1098F7-C718-4415-9D90-909C3F46A8D8</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Mounted Transmit Disk</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>DC542A93-ECDF-42FA-B8A7-90C4AE6CA005</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>62</integer>
+				<key>keyword</key>
+				<string>ftpmount</string>
+				<key>runningsubtext</key>
+				<string>working...</string>
+				<key>script</key>
+				<string>/usr/bin/ruby ./feedback.rb {query}</string>
+				<key>subtext</key>
+				<string>Search for a Favorite to Mount</string>
+				<key>title</key>
+				<string>Mount a Transmit Disk</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>422F1D87-A768-4B92-843D-C8C279EE7BA2</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>readme</string>
@@ -228,6 +319,11 @@ end alfred_script</string>
 			<key>ypos</key>
 			<real>10</real>
 		</dict>
+		<key>422F1D87-A768-4B92-843D-C8C279EE7BA2</key>
+		<dict>
+			<key>ypos</key>
+			<real>340</real>
+		</dict>
 		<key>44F15B00-84CC-4B1B-9B79-1BB5091AEDB5</key>
 		<dict>
 			<key>ypos</key>
@@ -242,6 +338,16 @@ end alfred_script</string>
 		<dict>
 			<key>ypos</key>
 			<real>80</real>
+		</dict>
+		<key>DC542A93-ECDF-42FA-B8A7-90C4AE6CA005</key>
+		<dict>
+			<key>ypos</key>
+			<real>320</real>
+		</dict>
+		<key>FE1098F7-C718-4415-9D90-909C3F46A8D8</key>
+		<dict>
+			<key>ypos</key>
+			<real>320</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
